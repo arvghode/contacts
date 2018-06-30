@@ -72,13 +72,7 @@ WSGI_APPLICATION = 'contacts.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# Database settings moved to local_settings file.
 
 
 # Password validation
@@ -99,6 +93,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+try:
+    from local_settings import *
+except ImportError:
+    pass
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
